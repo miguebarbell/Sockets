@@ -5,7 +5,6 @@ import java.net.Socket;
 public class Main {
 
 	public static void main(String[] args) {
-//		String server = "localhost";
 		while (true) {
 			try {
 				ServerSocket serverSocket = new ServerSocket(8080, 10);
