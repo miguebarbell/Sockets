@@ -15,13 +15,12 @@ public class Main {
 			// writing characters to a buffer
 			BufferedReader bufferedReader = new BufferedReader(isr);
 			BufferedWriter bufferedWriter = new BufferedWriter(osw);
-			String message = bufferedReader.readLine();
-			PageInjector response = new PageInjector(message);
-			response.write();
-			bufferedWriter.write(response.readFile());
+			String headers = bufferedReader.readLine();
+			FileWriter fileWriter = new FileWriter(headers);
+			fileWriter.write();
+			bufferedWriter.write(fileWriter.readFile());
 			bufferedWriter.newLine();
 			bufferedWriter.flush();
-			response.write();
 			socket.close();
 			isr.close();
 			osw.close();

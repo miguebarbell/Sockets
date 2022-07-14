@@ -10,17 +10,17 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PageInjector {
+public class FileWriter {
 	private final String template;
 
 	private String fileName;
 
-	public PageInjector(String content) {
+	public FileWriter(String content) {
 //		Pattern pattern = Pattern.compile("\\s*(.*/[a-zA-Z]+\\.html?)\\s*");
 		Pattern pattern = Pattern.compile("(GET|POST|PUT)\\s/(.+\\..+)\\s.*", Pattern.CASE_INSENSITIVE);
 		Matcher m = pattern.matcher(content);
 		while (m.find()) {
-			fileName = buildFilenameFromUrl(m.group(2));
+			fileName = buildFilenameFromUrl(m.group(2)); // group one matching the request method
 		}
 		LocalDateTime time = LocalDateTime.now();
 		String title = "Socket HTTP Server";
