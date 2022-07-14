@@ -16,10 +16,11 @@ public class PageInjector {
 	private String fileName;
 
 	public PageInjector(String content) {
-		Pattern pattern = Pattern.compile("\\s*(/+.*/[a-zA-Z]+\\.html?)\\s*");
+//		Pattern pattern = Pattern.compile("\\s*(.*/[a-zA-Z]+\\.html?)\\s*");
+		Pattern pattern = Pattern.compile("(GET|POST|PUT)\\s/(.+\\..+)\\s.*", Pattern.CASE_INSENSITIVE);
 		Matcher m = pattern.matcher(content);
 		while (m.find()) {
-			fileName = buildFilenameFromUrl(m.group(1));
+			fileName = buildFilenameFromUrl(m.group(2));
 		}
 		LocalDateTime time = LocalDateTime.now();
 		String title = "Socket HTTP Server";
@@ -53,7 +54,7 @@ public class PageInjector {
 		try {
 		return Files.readString(Paths.get(fileName));
 	} catch (NullPointerException e) {
-			return "You should ask for an html or html file.";
+			return "You should ask for an .htm or .html file.";
 		}
 	}
 }
