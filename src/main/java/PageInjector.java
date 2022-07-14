@@ -53,7 +53,7 @@ public class PageInjector {
 		try {
 		return Files.readString(Paths.get(fileName));
 	} catch (NullPointerException e) {
-			return "NPE";
+			return "You should ask for an html or html file.";
 		}
 	}
 }
