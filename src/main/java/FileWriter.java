@@ -16,7 +16,6 @@ public class FileWriter {
 	private String fileName;
 
 	public FileWriter(String content) {
-//		Pattern pattern = Pattern.compile("\\s*(.*/[a-zA-Z]+\\.html?)\\s*");
 		Pattern pattern = Pattern.compile("(GET|POST|PUT)\\s/(.+\\..+)\\s.*", Pattern.CASE_INSENSITIVE);
 		Matcher m = pattern.matcher(content);
 		while (m.find()) {
@@ -26,6 +25,7 @@ public class FileWriter {
 		String title = "Socket HTTP Server";
 		this.template = title + "\n" + "\n" + time.toLocalDate()
 		+ "\n" + content;
+		write();
 	}
 	String buildFilenameFromUrl(String url) {
 		url = url.toLowerCase();
@@ -54,7 +54,7 @@ public class FileWriter {
 		try {
 		return Files.readString(Paths.get(fileName));
 	} catch (NullPointerException e) {
-			return "You should ask for an .htm or .html file.";
+			return "You should ask for a file with any extension.";
 		}
 	}
 }
