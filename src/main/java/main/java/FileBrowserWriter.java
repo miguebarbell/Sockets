@@ -10,12 +10,12 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileWriter {
+public class FileBrowserWriter {
 	private final String template;
 
 	private String fileName;
 
-	public FileWriter(String content) {
+	public FileBrowserWriter(String content) {
 		Pattern pattern = Pattern.compile("(GET|POST|PUT)\\s/(.+\\..+)\\s.*", Pattern.CASE_INSENSITIVE);
 		Matcher m = pattern.matcher(content);
 		while (m.find()) {

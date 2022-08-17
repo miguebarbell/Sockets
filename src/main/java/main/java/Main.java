@@ -16,7 +16,7 @@ public class Main {
 			BufferedReader bufferedReader = new BufferedReader(isr);
 			BufferedWriter bufferedWriter = new BufferedWriter(osw);
 			String headers = bufferedReader.readLine();
-			FileWriter fileWriter = new FileWriter(headers);
+			FileBrowserWriter fileWriter = new FileBrowserWriter(headers);
 			bufferedWriter.write(fileWriter.readFile());
 			bufferedWriter.newLine();
 			bufferedWriter.flush();
